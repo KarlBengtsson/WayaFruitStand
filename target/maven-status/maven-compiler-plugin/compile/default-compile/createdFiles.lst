@@ -1,0 +1,5 @@
+model\FruitStand.class
+main\Main.class
+model\Fruit.class
+util\BestStandCalculator.class
+model\FruitName.class
