@@ -20,6 +20,10 @@ public class FruitStand {
         return fruitSet.size() == 2;
     }
 
+    public Set<Fruit> getFruitSet() {
+        return  fruitSet;
+    }
+
     public int getStandNumber() {
         return standNumber;
     }

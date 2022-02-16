@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class BestStandCalculator {
+public class FruitStandCalculator {
 
-    public BestStandCalculator() {}
+    public FruitStandCalculator() {}
 
     public FruitStand calculateBestFruitStand(List<FruitStand> fruitStands) throws Exception {
         if (fruitStands.isEmpty()) {
@@ -26,5 +26,11 @@ public class BestStandCalculator {
                 .filter(FruitStand::containsTwoFruits)
                 .min(Comparator.comparing(FruitStand::getTotalPrice))
                 .orElseThrow(() -> new Exception("No FruitStand Matches Pelle and Kajsas Requirements"));
+    }
+
+    public FruitStand calculateAndRemoveBestFruitStand(List<FruitStand> fruitStands) throws Exception {
+        FruitStand bestStand = calculateBestFruitStand(fruitStands);
+        fruitStands.remove(bestStand);
+        return bestStand;
     }
 }

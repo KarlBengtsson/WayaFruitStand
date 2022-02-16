@@ -1,17 +1,20 @@
 package main;
 
 import model.FruitStand;
-import util.BestStandCalculator;
+import util.FruitStandCalculator;
+import util.ResultGenerator;
 
 import java.util.ArrayList;
 
 public class Main {
 
     public static void main (String[] args) throws Exception {
-        BestStandCalculator bestStandCalculator = new BestStandCalculator();
+        FruitStandCalculator fruitStandCalculator = new FruitStandCalculator();
 
-        FruitStand fruitStand = bestStandCalculator.calculateBestFruitStand(new ArrayList<>());
-        System.out.println("The FruitStand with the lowest price is " + fruitStand.getStandNumber() +
-                ". The total price of the the fruit was " + fruitStand.getTotalPrice());
+        FruitStand bestFruitStand = fruitStandCalculator.calculateAndRemoveBestFruitStand(new ArrayList<>());
+        FruitStand secondBestFruitStand = fruitStandCalculator.calculateBestFruitStand(new ArrayList<>());
+
+        System.out.println(ResultGenerator.generateDetailedResult(bestFruitStand, "lowest"));
+        System.out.println(ResultGenerator.generateDetailedResult(secondBestFruitStand, "second lowest"));
     }
 }

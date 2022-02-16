@@ -10,11 +10,11 @@ public class Fruit {
         this.name = name;
     }
 
-    double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    String getName() {
+    public String getName() {
         return name.getFruitType();
     }
 }

@@ -17,8 +17,8 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
-public class BestStandCalculatorTest{
-    private BestStandCalculator bestStandCalculator = new BestStandCalculator();
+public class FruitStandCalculatorTest {
+    private FruitStandCalculator fruitStandCalculator = new FruitStandCalculator();
     private List<FruitStand> fruitStands = new ArrayList<>();
 
     @Rule
@@ -41,14 +41,24 @@ public class BestStandCalculatorTest{
 
     @Test
     public void testChooseCheapestStand() throws Exception {
-        FruitStand cheapestStand = bestStandCalculator.calculateBestFruitStand(fruitStands);
+        FruitStand cheapestStand = fruitStandCalculator.calculateBestFruitStand(fruitStands);
         assert cheapestStand.getStandNumber() == 4;
+    }
+
+    @Test
+    public void testChooseCheapestStandAndRemove() throws Exception {
+        FruitStand cheapestStand = fruitStandCalculator.calculateAndRemoveBestFruitStand(fruitStands);
+        assert cheapestStand.getStandNumber() == 4;
+        assert fruitStands.size() == 6;
+
+        FruitStand secondCheapestStand = fruitStandCalculator.calculateBestFruitStand(fruitStands);
+        assert  secondCheapestStand.getStandNumber() == 6;
     }
 
     @Test
     public void testNoFruitStands() throws Exception {
         List<FruitStand> stands = Collections.emptyList();
-        FruitStand fruitStand = bestStandCalculator.calculateBestFruitStand(stands);
+        FruitStand fruitStand = fruitStandCalculator.calculateBestFruitStand(stands);
         assert fruitStand.getStandNumber() == 0;
     }
 
@@ -56,7 +66,7 @@ public class BestStandCalculatorTest{
     public void testOneFruitStand() throws Exception {
         FruitStand fruitStand1 = FruitStandTestBuilder.buildPearCherryFruitStand(1, 13, 40);
         List<FruitStand> stands = Collections.singletonList(fruitStand1);
-        FruitStand fruitStand = bestStandCalculator.calculateBestFruitStand(stands);
+        FruitStand fruitStand = fruitStandCalculator.calculateBestFruitStand(stands);
         assert fruitStand.getStandNumber() == 1;
     }
 
@@ -100,7 +110,7 @@ public class BestStandCalculatorTest{
 
     private void assertExceptionThrown(List<FruitStand> fruitStands) {
         try {
-            bestStandCalculator.calculateBestFruitStand(fruitStands);
+            fruitStandCalculator.calculateBestFruitStand(fruitStands);
         } catch (Exception expectedException){
             assertEquals(expectedException.getMessage(), "No FruitStand Matches Pelle and Kajsas Requirements");
         }
