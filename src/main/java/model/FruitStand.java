@@ -25,10 +25,6 @@ public class FruitStand {
     }
 
     public double getTotalPrice() {
-        double price = 0;
-        for (Fruit fruit : fruitSet) {
-            price += fruit.getPrice();
-        }
-        return price;
+        return fruitSet.stream().mapToDouble(Fruit::getPrice).sum();
     }
 }
