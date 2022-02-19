@@ -10,6 +10,12 @@ public class FruitStandCalculator {
 
     public FruitStandCalculator() {}
 
+    public FruitStand calculateAndRemoveBestFruitStand(List<FruitStand> fruitStands) throws Exception {
+        FruitStand bestStand = calculateBestFruitStand(fruitStands);
+        fruitStands.remove(bestStand);
+        return bestStand;
+    }
+
     public FruitStand calculateBestFruitStand(List<FruitStand> fruitStands) throws Exception {
         if (fruitStands.isEmpty()) {
             return new FruitStand(Collections.emptySet(), 0);
@@ -26,11 +32,5 @@ public class FruitStandCalculator {
                 .filter(FruitStand::containsTwoFruits)
                 .min(Comparator.comparing(FruitStand::getTotalPrice))
                 .orElseThrow(() -> new Exception("No FruitStand Matches Pelle and Kajsas Requirements"));
-    }
-
-    public FruitStand calculateAndRemoveBestFruitStand(List<FruitStand> fruitStands) throws Exception {
-        FruitStand bestStand = calculateBestFruitStand(fruitStands);
-        fruitStands.remove(bestStand);
-        return bestStand;
     }
 }
