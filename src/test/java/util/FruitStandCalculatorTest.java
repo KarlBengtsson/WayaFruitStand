@@ -1,7 +1,5 @@
 package util;
 
-import model.Fruit;
-import model.FruitStand;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

@@ -1,10 +1,5 @@
 package util;
 
-import model.Fruit;
-import model.FruitName;
-import model.FruitStand;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
