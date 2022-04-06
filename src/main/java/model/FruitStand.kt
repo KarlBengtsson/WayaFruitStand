@@ -10,7 +10,8 @@ class FruitStand {
     }
 
     fun containsPear(): Boolean {
-        return fruitSet!!.stream().anyMatch { fruit: Fruit -> fruit.getName() == FruitName.PEAR.getFruitType() }
+        return fruitSet!!.stream().anyMatch()
+        { fruit: Fruit -> fruit.getName() == FruitName.PEAR.type }
     }
 
     fun containsTwoFruits(): Boolean {

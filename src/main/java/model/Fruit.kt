@@ -14,6 +14,6 @@ class Fruit {
     }
 
     fun getName(): String? {
-        return name!!.fruitType
+        return name!!.type
     }
 }
